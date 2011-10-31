@@ -1,0 +1,5 @@
+= @discussion.users.map { |u| u.name }.join(", ")
+= debug @discussion.speakers 
+
+- @discussion.messages.each do |message|
+  = message.body

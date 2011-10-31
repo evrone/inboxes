@@ -1,0 +1,10 @@
+= form_for @discussion do |f|
+  .entry
+    = f.label :recipient_tokens
+    = f.collection_select :recipient_tokens, User.all, :id, :name, :prompt => true, :html_options => { :multiple => true }
+  .entry
+    = f.fields_for :messages do |j|
+      = j.label :body
+      = j.text_area :body, :label => "Сообщение"
+  
+  = f.submit 'Отправить'
