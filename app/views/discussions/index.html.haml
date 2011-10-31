@@ -1,5 +1,7 @@
-%h3 Discussions
+%h3 Discussions list
 - @discussions.each do |discussion|
-  = discussion.id
+  .discussion
+    = link_to "Discussion with #{discussion.users.collect{|u| u[Inboxes::config.user_name]}.join(', ')}", discussion
   
-= link_to "Create new", new_discussion_path
+%p
+  = link_to "Create new", new_discussion_path

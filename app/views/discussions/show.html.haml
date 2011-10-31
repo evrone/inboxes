@@ -1,5 +1,13 @@
-= @discussion.users.map { |u| u.name }.join(", ")
-= debug @discussion.speakers 
+%h3
+  Chat with
+  = @discussion.users.map { |u| u[Inboxes::config.user_name] }.join(", ")
 
+%h3 Messages
 - @discussion.messages.each do |message|
-  = message.body
+  %p
+    = "[#{message.user[Inboxes::config.user_name]}]"
+    = message.body
+    = "@ #{l(message.created_at)}"
+    
+= render "messages/form"
+= link_to "All discussions", discussions_path

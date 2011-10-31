@@ -1,0 +1,7 @@
+en:
+  views:
+    discussions:
+      started: "Discussion started"
+      leaved: "You leaved discussion"
+      exists: "Discussion between you and %{user} already exists"
+      can_not_participate: "You are not listed in this discussion"

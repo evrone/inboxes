@@ -1,0 +1,6 @@
+.message_form
+  = form_for Message.new, :url => discussion_messages_path(@discussion.id), :method => :post do |f|
+    = f.text_area :body
+    = f.submit "Отправить"
+
+= link_to "Выйти из переписки", leave_discussion_path(@discussion), :method => :post unless @discussion.private?

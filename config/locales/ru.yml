@@ -1,0 +1,7 @@
+ru:
+  views:
+    discussions:
+      started: "Чат начат"
+      leaved: "Вы покинули дискуссию"
+      exists: "Дискуссия между вами и %{user} уже существует"
+      can_not_participate: "Вы не состоите в этой дискуссии"

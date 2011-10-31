@@ -66,15 +66,13 @@ class Discussion < ActiveRecord::Base
   # проверяет, есть ли уже беседа между пользователями
   # TODO вынести в отдельный метод а в этом возращать true/false, а то неправославно как-то
   def self.find_between_users(user, user2)
-    res = nil
+    dialog = nil
     discussions = self.joins(:speakers).includes(:users).where("speakers.user_id = ?", user.id)
     Rails.logger.info "Searching for ids: #{user.id}, #{user2.id}"
     discussions.each do |discussion|
-
-      res = discussion if discussion.private? && ((discussion.users.first == user && discussion.users.last == user2) || (discussion.users.first == user2 && discussion.users.last == user))
-      Rails.logger.info "Searching for ids: #{discussion.users.inspect}" if discussion.private?
+      dialog = discussion if discussion.private? && ((discussion.users.first == user && discussion.users.last == user2) || (discussion.users.first == user2 && discussion.users.last == user))
     end
-    res
+    dialog
   end
 
   # приватная/групповая
@@ -88,14 +86,14 @@ class Discussion < ActiveRecord::Base
   end
 
   # проверка, является ли дискуссия непрочитанной для пользователя
-  # def unread_for?(user)
-  #   flag = self.views.find_by_user_id(user.id)
-  #   if flag
-  #     self.updated_at >= flag.updated_at
-  #   else
-  #     true
-  #   end
-  # end
+  def unread_for?(user)
+    flag = self.views.find_by_user_id(user.id)
+    if flag
+      self.updated_at >= flag.updated_at
+    else
+      true
+    end
+  end
 
   # пометить как прочитанная
   def mark_as_read_for(user)
@@ -112,7 +110,7 @@ class Discussion < ActiveRecord::Base
 
   def check_that_has_at_least_two_users
     Rails.logger.info self.recipient_ids
-    errors.add :recipient_tokens, "Укажите хотя бы одного получателя" #if !self.recipient_ids || self.recipient_ids.size < 2
+    errors.add :recipient_tokens, "Укажите хотя бы одного получателя" if !self.recipient_ids || self.recipient_ids.size < 2
   end
 
 end
