@@ -1,5 +1,12 @@
 en:
+  activerecord:
+    attributes:
+      discussion:
+        recipient_tokens: "Recipients"
   views:
+    speakers:
+      added: "Speaker was added to discussion"
+      removed: "Speaker was removed from discussion"
     discussions:
       started: "Discussion started"
       leaved: "You leaved discussion"

@@ -24,13 +24,19 @@ Remember that unfortunately, Inboxes reserve 3 model names: Discussion, Discussi
 4. Now Inboxes is ready to use. Open `http://yoursite.dev/discussions` to show discussions list. You can start new one.
 
 Default Inboxes views are ugly, so you can copy it to your app and make anything with them: `rails generate inboxes:views`
+If you have problems with installation if gem, you can check [demo app code](https://github.com/kirs/inboxes-app)
 
-###Todo
+## I18n
+
+By default, this gem provides localized phrases for Russian and English languages. You can easily override any of them. [Here is](https://github.com/kirs/inboxes/blob/master/config/locales/en.yml) list of all I18n phrases.
+
+##Todo
 
 - Add rspec tests
 - Move gem resources to namespace
+- Describe integration with Faye
 
-###Authors:
+##Authors
 
 - [Kir Shatrov](https://github.com/kirs/) (Evrone Company)
 

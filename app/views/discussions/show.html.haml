@@ -1,13 +1,25 @@
-%h3
-  Chat with
-  = @discussion.users.map { |u| u[Inboxes::config.user_name] }.join(", ")
+%h2
+  Members:
+- @discussion.speakers.each do |speaker|
+  %div
+    = speaker.user[Inboxes::config.user_name]
+    = link_to '(remove)', discussion_speaker_path(@discussion, speaker), :method => :delete
 
-%h3 Messages
+- available_users = User.all.map { |u| u unless @discussion.users.include?(u) }.delete_if { |w| w.nil? }
+- if available_users.any?
+  = form_for Speaker.new, :url => discussion_speakers_path(@discussion) do |f|
+    = f.label :user_id, "Add speaker"
+    = f.collection_select :user_id, available_users, :id, :name
+    = f.submit "Add"
+    
+%h2 Messages
 - @discussion.messages.each do |message|
-  %p
+  %div
     = "[#{message.user[Inboxes::config.user_name]}]"
     = message.body
     = "@ #{l(message.created_at)}"
-    
+
+%h3 Add message    
 = render "messages/form"
+
 = link_to "All discussions", discussions_path

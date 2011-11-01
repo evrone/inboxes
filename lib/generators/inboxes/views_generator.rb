@@ -7,11 +7,14 @@ module Inboxes
       class_option :template_engine, :type => :string, :aliases => '-e', :desc => 'Template engine for the views. Available options are "erb" and "haml".'
       
       def copy_or_fetch
-        # filename_pattern = File.join self.class.source_root, "discussions", "*.html.#{template_engine}"
-        # puts Dir.glob(filename_pattern).map {|f| File.basename f}.inspect
-        # Dir.glob(filename_pattern).map {|f| File.basename f}.each do |f|
-        #   # copy_file f, "app/views/#{f}"
-        # end
+        # templates = 
+        # [
+        #   "discussions/"
+        # ]
+        filename_pattern = File.join self.class.source_root, "*" #/*.html.#{template_engine}"
+        Dir.glob(filename_pattern).map {|f| File.basename f}.each do |f|
+          directory f.to_s, "app/views/#{f}"
+        end
       end
 
       private
