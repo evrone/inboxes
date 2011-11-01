@@ -1,5 +1,7 @@
-%h2
-  Members:
+%h1 Discussion
+
+%h3
+  Members
 - @discussion.speakers.each do |speaker|
   %div
     = speaker.user[Inboxes::config.user_name]
@@ -12,14 +14,26 @@
     = f.collection_select :user_id, available_users, :id, :name
     = f.submit "Add"
     
-%h2 Messages
-- @discussion.messages.each do |message|
-  %div
-    = "[#{message.user[Inboxes::config.user_name]}]"
-    = message.body
-    = "@ #{l(message.created_at)}"
+  
+%h3 Messages
 
-%h3 Add message    
+%table
+  %tr
+    %th User
+    %th Message
+    %th Posted at
+  - @discussion.messages.each do |message|
+    %tr
+      %td
+        = message.user[Inboxes::config.user_name]
+      %td
+        = message.body
+      %td
+        = l(message.created_at)
+
+%h3 Add message
 = render "messages/form"
 
-= link_to "All discussions", discussions_path
+%p
+  = link_to "Выйти из переписки", leave_discussion_path(@discussion), :method => :post unless @discussion.private?
+  = link_to "All discussions", discussions_path

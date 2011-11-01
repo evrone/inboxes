@@ -1,7 +1,18 @@
-%h3 Discussions list
-- @discussions.each do |discussion|
-  .discussion
-    = link_to "Discussion with #{discussion.users.collect{|u| u[Inboxes::config.user_name]}.join(', ')}", discussion
+%h1 Discussions list
+
+%table
+  %tr
+    %th Last message
+    %th Members
+    %th Unread
+  - @discussions.each do |discussion|
+    %tr
+      %td
+        = discussion.updated_at
+      %td
+        = link_to discussion.users.collect{|u| u[Inboxes::config.user_name]}.join(', '), discussion
+      %td
+        = discussion.unread_for?(current_user) ? "Yes" : "No"
   
 %p
   = link_to "Create new", new_discussion_path

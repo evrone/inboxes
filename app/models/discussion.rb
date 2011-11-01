@@ -13,10 +13,12 @@ class Discussion < ActiveRecord::Base
   has_many :users, :through => :speakers
 
   # отметки о прочтении юзеров
-  # has_many :views, :dependent => :destroy, :class_name => "DiscussionView"
-
-  # жутко неоптимизированная часть, возможны баги
-  # scope :unread_for, lambda { |user_or_user_id| joins(:views, :speakers).where("discussions.updated_at >= discussion_views.updated_at AND speakers.user_id = ?", user_or_user_id.is_a?(User) ? user_or_user_id.id : user_or_user_id ) }
+  has_many :views, :dependent => :destroy, :class_name => "DiscussionView"
+  
+  scope :unread_for, (lambda do |user_or_user_id|
+    user = user_or_user_id.is_a?(User) ? user_or_user_id.id : user_or_user_id
+    joins(:views, :speakers).where("discussions.updated_at >= discussion_views.updated_at AND speakers.user_id = ? AND discussion_views.user_id = ?", user, user)
+  end)
 
   accepts_nested_attributes_for :messages
 
@@ -81,9 +83,9 @@ class Discussion < ActiveRecord::Base
   end
 
   # дата последнего сообщения в дискуссии
-  def last_message_at
-    self.messages.last ? self.messages.last.created_at : nil
-  end
+  # def last_message_at
+  #   self.messages.last ? self.messages.last.created_at : nil
+  # end
 
   # проверка, является ли дискуссия непрочитанной для пользователя
   def unread_for?(user)

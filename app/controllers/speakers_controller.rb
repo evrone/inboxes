@@ -14,7 +14,7 @@ class SpeakersController < ApplicationController
     @speaker = Speaker.find(params[:id])
     @speaker.destroy
     flash[:notice] = t("views.speakers.removed")
-    redirect_to @discussion.speakers.any? ? @discussion : discussions_url
+    redirect_to @discussion.speakers.any? && @discussion.can_participate?(current_user) ? @discussion : discussions_url
   end
   
   private
