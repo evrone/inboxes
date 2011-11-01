@@ -1,9 +1,9 @@
 require "inboxes/version"
 require "inboxes/railtie"
 require "inboxes/engine"
+require "inboxes/active_record_extension"
 
 module Inboxes
-  # Your code goes here...
   
   def self.configure(&block)
     yield @config ||= Inboxes::Configuration.new
@@ -23,5 +23,8 @@ module Inboxes
       config.param_name.respond_to?(:call) ? config.param_name.call() : config.param_name 
     end
   end
+  
+  # adding method inboxes for models
+  ActiveRecord::Base.extend(Inboxes::ActiveRecordExtension)
   
 end

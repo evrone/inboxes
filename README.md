@@ -10,4 +10,20 @@ Inboxes is a young messaging system for Rails app. It:
 
 Inboxes requires Rails 3.x and [Devise](https://github.com/plataformatec/devise) for user identification (surely, messaging system is not possible without users).
 
-We recommend you to use it with [Faye](https://github.com/jcoglan/faye), because it's really very useful with it.
+We recommend to use Inboxes with [Faye](https://github.com/jcoglan/faye), because it's really useful with it.
+
+Remember that unfortunately, Inboxes reserve 3 model names: Discussion, DiscussionView, Message and Speaker and 2 controller names: Messages and Discussions.
+
+#Installation
+
+0. Make sure that Devise is already installed and configured.
+
+1. Add `gem "inboxes", :git => git://github.com/kirs/inboxes.git` to your `Gemfile` and run `bundle install`
+2. Run `rails generate inboxes:install`. This command will generate migration for messaging system. Then run `rake db:migrate`
+3. Add `inboxes` to your User model like [here](https://gist.github.com/1330080)
+4. 
+
+##Todo
+
+- add rspec tests
+- move controllers and models to namespace

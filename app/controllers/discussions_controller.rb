@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_permissions, :only => :show
+  # before_filter :check_permissions, :only => :show
   
   before_filter :load_and_check_discussion_recipient, :only => [:create, :new]
   
@@ -74,7 +74,6 @@ class DiscussionsController < ApplicationController
         redirect_to discussion_url(discussion), :notice => t("views.discussions.exists", :user => user[Inboxes::config.user_name])
       end
     end
-    
   end
   
 end
