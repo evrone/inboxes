@@ -5,12 +5,12 @@ ru:
         recipient_tokens: "Получатели"
       message:
         body: "Сообщение"
-  views:
+  inboxes:
     discussions:
-      started: "Чат начат."
-      leaved: "Вы покинули дискуссию."
-      exists: "Дискуссия между вами и %{user} уже существует."
-      can_not_participate: "Вы не состоите в этой дискуссии."
+      started: "Чат начат"
+      leaved: "Вы покинули дискуссию"
+      exists: "Дискуссия между вами и %{user} уже существует"
+      can_not_participate: "Вы не состоите в этой дискуссии"
     speakers:
-      added: "Участник дискуссии добавлен."
-      removed: "Участник дискуссии удален."
+      added: "Участник дискуссии добавлен"
+      removed: "Участник дискуссии удален"

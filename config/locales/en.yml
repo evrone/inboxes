@@ -3,12 +3,12 @@ en:
     attributes:
       discussion:
         recipient_tokens: "Recipients"
-  views:
+  inboxes:
     speakers:
       added: "Speaker was added to discussion"
       removed: "Speaker was removed from discussion"
     discussions:
       started: "Discussion started"
-      leaved: "You leaved discussion"
+      leaved: "You leaved the discussion"
       exists: "Discussion between you and %{user} already exists"
       can_not_participate: "You are not listed in this discussion"

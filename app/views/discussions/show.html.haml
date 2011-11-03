@@ -35,5 +35,5 @@
 = render "messages/form"
 
 %p
-  = link_to "Выйти из переписки", leave_discussion_path(@discussion), :method => :post unless @discussion.private?
+  = link_to "Leave discussion", discussion_speaker_path(@discussion, @discussion.find_speaker_by_user(current_user)), :method => :delete unless @discussion.private?
   = link_to "All discussions", discussions_path

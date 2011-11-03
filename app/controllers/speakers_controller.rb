@@ -13,7 +13,7 @@ class SpeakersController < ApplicationController
   def destroy
     @speaker = Speaker.find(params[:id])
     @speaker.destroy
-    flash[:notice] = t("views.speakers.removed")
+    flash[:notice] = @speaker.user == current_user ? t("inboxes.discussions.leaved") : t("inboxes.speakers.removed")
     redirect_to @discussion.speakers.any? && @discussion.can_participate?(current_user) ? @discussion : discussions_url
   end
   
@@ -21,6 +21,6 @@ class SpeakersController < ApplicationController
   
   def init_and_check_permissions
     @discussion = Discussion.find(params[:discussion_id])
-    redirect_to discussions_url, :notice => t("views.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
+    redirect_to discussions_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
   end
 end

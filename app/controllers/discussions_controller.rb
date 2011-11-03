@@ -12,7 +12,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1.json
   def show
     @discussion = Discussion.includes(:messages, :speakers).find(params[:id])
-    redirect_to discussions_url, :notice => t("views.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
+    redirect_to discussions_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
     
     @discussion.mark_as_read_for(current_user)
   end
@@ -36,15 +36,10 @@ class DiscussionsController < ApplicationController
     end
     
     if @discussion.save
-      redirect_to @discussion, :notice => t("views.discussions.started")
+      redirect_to @discussion, :notice => t("inboxes.discussions.started")
     else
       render :action => "new"
     end
-  end
-  
-  def leave
-    @discussion.remove_speaker(current_user)
-    redirect_to discussions_url, :notice => t("views.discussions.leaved")
   end
   
   private
@@ -64,7 +59,7 @@ class DiscussionsController < ApplicationController
           Message.create(:discussion => discussion, :user => current_user, :body => message.body) if message.body
         end
         # перекидываем на нее
-        redirect_to discussion_url(discussion), :notice => t("views.discussions.exists", :user => user[Inboxes::config.user_name])
+        redirect_to discussion_url(discussion), :notice => t("inboxes.discussions.exists", :user => user[Inboxes::config.user_name])
       end
     end
   end

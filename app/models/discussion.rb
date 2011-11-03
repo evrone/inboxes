@@ -99,16 +99,16 @@ class Discussion < ActiveRecord::Base
 
   # пометить как прочитанная
   def mark_as_read_for(user)
-    true
-  #   flag = DiscussionView.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
-  #   flag.touch
+    # true
+    flag = DiscussionView.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
+    flag.touch
   end
-
-  private
-
+  
   def find_speaker_by_user user
     Speaker.find_by_discussion_id_and_user_id(self.id, user.id)
   end
+  
+  private
 
   def check_that_has_at_least_two_users
     Rails.logger.info self.recipient_ids
