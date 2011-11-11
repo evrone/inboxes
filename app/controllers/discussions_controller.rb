@@ -14,7 +14,7 @@ class DiscussionsController < ApplicationController
     @discussion = Discussion.includes(:messages, :speakers).find(params[:id])
     redirect_to discussions_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
     
-    @discussion.mark_as_read_for(current_user)
+    # @discussion.mark_as_read_for(current_user)
   end
 
   # GET /discussions/new

@@ -13,11 +13,10 @@ class Discussion < ActiveRecord::Base
   has_many :users, :through => :speakers
 
   # отметки о прочтении юзеров
-  has_many :views, :dependent => :destroy, :class_name => "DiscussionView"
   
   scope :unread_for, (lambda do |user_or_user_id|
     user = user_or_user_id.is_a?(User) ? user_or_user_id.id : user_or_user_id
-    joins(:views, :speakers).where("discussions.updated_at >= discussion_views.updated_at AND speakers.user_id = ? AND discussion_views.user_id = ?", user, user)
+    joins(:speakers).where("discussions.updated_at >= speakers.updated_at AND speakers.user_id = ?", user)
   end)
 
   accepts_nested_attributes_for :messages
@@ -26,7 +25,7 @@ class Discussion < ActiveRecord::Base
 
   # добавляем записи об указанных собеседников
   after_save(:on => :create) do
-    Rails.logger.info("Repicients ids: #{recipient_ids.inspect}")
+    # Rails.logger.info("Repicients ids: #{recipient_ids.inspect}")
 
     if recipient_ids.kind_of?(Array)
       recipient_ids.uniq!
@@ -89,9 +88,9 @@ class Discussion < ActiveRecord::Base
 
   # проверка, является ли дискуссия непрочитанной для пользователя
   def unread_for?(user)
-    flag = self.views.find_by_user_id(user.id)
-    if flag
-      self.updated_at >= flag.updated_at
+    speaker = find_speaker_by_user(user)
+    if speaker
+      self.updated_at >= speaker.updated_at
     else
       true
     end
@@ -99,9 +98,9 @@ class Discussion < ActiveRecord::Base
 
   # пометить как прочитанная
   def mark_as_read_for(user)
-    # true
-    flag = DiscussionView.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
-    flag.touch
+    speaker = Speaker.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
+    # flag.update_attributes(:updat => Time.zone.now)
+    speaker.touch
   end
   
   def find_speaker_by_user user
@@ -111,8 +110,7 @@ class Discussion < ActiveRecord::Base
   private
 
   def check_that_has_at_least_two_users
-    Rails.logger.info self.recipient_ids
-    errors.add :recipient_tokens, "Укажите хотя бы одного получателя" if !self.recipient_ids || self.recipient_ids.size < 2
+    errors.add :recipient_tokens, t("inboxes.discussions.choose_at_least_one_recipient") if !self.recipient_ids || self.recipient_ids.size < 2
   end
 
 end
