@@ -1,3 +1,6 @@
+- if Inboxes::config.faye_enabled
+  = javascript_include_tag "messaging"
+
 %h1 Discussion
 
 %h3
@@ -17,22 +20,11 @@
   
 %h3 Messages
 
-%table
-  %tr
-    %th User
-    %th Message
-    %th Posted at
-  - @discussion.messages.each do |message|
-    %tr
-      %td
-        = message.user[Inboxes::config.user_name]
-      %td
-        = message.body
-      %td
-        = l(message.created_at)
-
+#messages_box
+  = render @discussion.messages, :as => :message
+  
 %h3 Add message
-= render "messages/form"
+= render "inboxes/messages/form"
 
 %p
   = link_to "Leave discussion", discussion_speaker_path(@discussion, @discussion.find_speaker_by_user(current_user)), :method => :delete unless @discussion.private?

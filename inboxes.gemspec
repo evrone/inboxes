@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Inboxes::VERSION
   s.authors     = ["Kir Shatrov"]
   s.email       = ["razor.psp@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://evrone.com/"
   s.summary     = %q{Messaging system for Rails 3 app}
   s.description = %q{Messaging system for Rails 3 app}
 
@@ -19,6 +19,15 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  s.add_development_dependency "ruby-debug"
+  # s.add_development_dependency "ruby-debug"
   s.add_runtime_dependency "haml-rails"
+  # s.add_runtime_dependency "inherited_resources"
+  
+  # s.add_development_dependency 'dm-sqlite-adapter', ['>= 1.1.0']
+  s.add_development_dependency 'rspec', ['>= 0']
+  s.add_development_dependency 'rspec-rails', ['>= 0']
+  # s.add_development_dependency 'rr', ['>= 0']
+  # s.add_development_dependency 'steak', ['>= 0']
+  # s.add_development_dependency 'capybara', ['>= 0']
+  s.add_development_dependency 'database_cleaner', ['>= 0']
 end

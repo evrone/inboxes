@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class Inboxes::MessagesController < Inboxes::BaseController
   
   def create
     @discussion = Discussion.find(params[:discussion_id])

@@ -1,0 +1,8 @@
+.message
+  %p
+    %span
+      = message.user[Inboxes::config.user_name]
+      @
+      = l(message.created_at)
+      =":"
+    %b= message.body

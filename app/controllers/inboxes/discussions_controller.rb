@@ -1,7 +1,6 @@
-class DiscussionsController < ApplicationController
+class Inboxes::DiscussionsController < Inboxes::BaseController
   before_filter :authenticate_user!
-  # before_filter :check_permissions, :only => :show
-  
+  before_filter :init_and_check_permissions, :only => :show
   before_filter :load_and_check_discussion_recipient, :only => [:create, :new]
   
   def index
@@ -11,10 +10,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1
   # GET /discussions/1.json
   def show
-    @discussion = Discussion.includes(:messages, :speakers).find(params[:id])
-    redirect_to discussions_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
-    
-    # @discussion.mark_as_read_for(current_user)
+    @discussion.mark_as_read_for(current_user)
   end
 
   # GET /discussions/new
@@ -44,6 +40,11 @@ class DiscussionsController < ApplicationController
   
   private
   
+  def init_and_check_permissions
+    @discussion = Discussion.includes(:messages, :speakers).find(params[:id])
+    redirect_to discussions_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
+  end
+  
   def load_and_check_discussion_recipient
     # initializing model fir new and create actions
     @discussion = Discussion.new((params[:discussion] ? params[:discussion] : {}))
@@ -63,5 +64,4 @@ class DiscussionsController < ApplicationController
       end
     end
   end
-  
 end

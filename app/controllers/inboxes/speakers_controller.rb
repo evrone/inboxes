@@ -1,4 +1,4 @@
-class SpeakersController < ApplicationController
+class Inboxes::SpeakersController < Inboxes::BaseController
   before_filter :init_and_check_permissions
   
   def create
