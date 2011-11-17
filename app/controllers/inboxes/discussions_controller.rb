@@ -48,8 +48,8 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
   # end
   
   def load_and_check_discussion_recipient
-    # initializing model fir new and create actions
-    @discussion = Discussion.new((params[:discussion] ? params[:discussion] : {}))
+    # initializing model for new and create actions
+    @discussion = Discussion.new(params[:discussion].presence || {})
     # @discussion.recipient_tokens = params[:recipients] if params[:recipients] # pre-population
     
     # checking if discussion with this user already exists
