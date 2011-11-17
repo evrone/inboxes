@@ -1,10 +1,10 @@
 class Inboxes::MessagesController < Inboxes::BaseController
+  # before_filter :init_discussion
+  # load_and_authorize_resource
+  load_and_authorize_resource :discussion
+  load_resource :message, :through => :discussion, :shallow => true
   
   def create
-    @discussion = Discussion.find(params[:discussion_id])
-    redirect_to root_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
-    
-    @message = Message.new(params[:message])
     @message.user = current_user
     @message.discussion = @discussion
     @message.save
@@ -14,5 +14,11 @@ class Inboxes::MessagesController < Inboxes::BaseController
       format.js
     end
   end
-  
+
+  # private
+  # 
+  # def init_and_check_permissions
+  #   @discussion = Discussion.find(params[:discussion_id])
+  #   redirect_to discussions_url, :notice => t("inboxes.discussions.can_not_participate") unless @discussion.can_participate?(current_user)
+  # end
 end
