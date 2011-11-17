@@ -33,17 +33,15 @@ By default, the gem provides localized phrases for Russian and English languages
 #Integration with Faye
 
 1. Add `gem "faye"` to your Gemfile and run `bundle install`. Install Faye by [the screencast](http://railscasts.com/episodes/260-messaging-with-faye)
-2. Create `messaging.js` in `app/assets/javascripts/` with these lines:
-
-`= require inboxes/faye`
+2. Create `messaging.js` in `app/assets/javascripts/` with these line: `= require inboxes/faye`
 
 3. Copy or replace 2 views from Inboxes example app to your application: [app/views/inboxes/messages/_form](https://github.com/kirs/inboxes-app/blob/master/app/views/inboxes/messages/_form.html.haml) and [app/views/inboxes/messages/create](https://github.com/kirs/inboxes-app/blob/master/app/views/inboxes/messages/create.js.erb)
  
 4. Add config parameters to your application config (last 2 are not necessary):
-    
-```config.inboxes.faye_enabled = true
-config.inboxes.faye_host = "inboxes-app.dev" # localhost by default
-config.inboxes.faye_port = 9292 # 9292 by default```
+   
+`config.inboxes.faye_enabled = true`
+`config.inboxes.faye_host = "inboxes-app.dev" # localhost by default`
+`config.inboxes.faye_port = 9292 # 9292 by default`
 
 5. Faye installation is finished. If you have any troubles, check the [example app](https://github.com/kirs/inboxes-app/)
 
