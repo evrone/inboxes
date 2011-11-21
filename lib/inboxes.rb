@@ -1,7 +1,9 @@
 require "inboxes/version"
 require "inboxes/railtie"
+require "inboxes/ability"
 require "inboxes/engine"
 require "inboxes/active_record_extension"
+
 
 module Inboxes
   

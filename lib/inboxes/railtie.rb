@@ -1,4 +1,5 @@
 require 'rails'
+require "inboxes/ability"
 
 module Inboxes
   class Railtie < ::Rails::Railtie
@@ -14,5 +15,9 @@ module Inboxes
 
       # app.config.middleware.insert_before "::Rails::Rack::Logger", "Inboxes::Middleware"
     end
+    
+    # def self.activate
+    #   Ability.register_ability(InboxesAbility)
+    # end
   end
 end

@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "ruby-debug"
   s.add_runtime_dependency "haml-rails"
-  s.add_runtime_dependency "cancan"
+  s.add_runtime_dependency "cancan", ['>= 0']
   # s.add_runtime_dependency "inherited_resources"
   
   # s.add_development_dependency 'dm-sqlite-adapter', ['>= 1.1.0']

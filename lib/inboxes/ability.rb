@@ -1,9 +1,13 @@
+require "cancan"
+
 module Inboxes
   class InboxesAbility
-    include CanCan::Ability
+    include ::CanCan::Ability
 
     def initialize(user)
       # Discussion
+      # raise "Registered!"
+      
       can [:index, :create], Discussion
       can :read, Discussion do |discussion|
         discussion.can_participate?(user)
