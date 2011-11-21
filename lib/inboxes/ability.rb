@@ -7,10 +7,11 @@ module Inboxes
     def initialize(user)
       # Discussion
       # raise "Registered!"
-      
-      can [:index, :create], Discussion
-      can :read, Discussion do |discussion|
-        discussion.can_participate?(user)
+      if user
+        can [:index, :create], Discussion
+        can :read, Discussion do |discussion|
+          discussion.can_participate?(user)
+        end
       end
       
       # Message
