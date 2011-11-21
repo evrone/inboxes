@@ -18,7 +18,7 @@ Remember that unfortunately, Inboxes reserve 3 resources names: Discussion, Mess
 
 *Make sure that Devise is already installed and configured!*
 
-1. Add `gem "inboxes"` to your `Gemfile` and run `bundle install`
+1. Add `gem "inboxes", "~> 0.1.2"` to your `Gemfile` and run `bundle install`
 2. Execute `rails generate inboxes:install`. This command will generate migration for messaging system. Don't forget to run migrations: `rake db:migrate`
 3. Add `inboxes` to your User model like [here](https://gist.github.com/1330080)
 4. Now Inboxes is ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
@@ -44,6 +44,8 @@ By default, the gem provides localized phrases for Russian and English languages
 `config.inboxes.faye_port = 9292 # 9292 by default`
 
 5. Faye installation is finished. If you have any troubles, check the [example app](https://github.com/kirs/inboxes-app/)
+
+*While testing Inboxes with Faye, don't forget to run it: `rackup faye.ru -s thin -E production`*
 
 ##Todo
 
