@@ -16,12 +16,12 @@ Remember that unfortunately, Inboxes reserve 3 resources names: Discussion, Mess
 
 ##Installation
 
-*Make sure that Devise is already installed and configured!*
+*Make sure that Devise is already installed and configured in your app!*
 
-1. Add `gem "inboxes", "~> 0.1.2"` to your `Gemfile` and run `bundle install`
+1. Add `gem "inboxes", "~> 0.1.2"` to the `Gemfile` and run `bundle install`
 2. Execute `rails generate inboxes:install`. This command will generate migration for messaging system. Don't forget to run migrations: `rake db:migrate`
 3. Add `inboxes` to your User model like [here](https://gist.github.com/1330080)
-4. Now Inboxes is ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
+4. Now Inboxes are ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
 
 Default Inboxes views are ugly, so you can copy into your app and make anything with them: `rails generate inboxes:views`
 If you have problems with installation, you can check [code of demo app](https://github.com/kirs/inboxes-app)
@@ -31,6 +31,8 @@ If you have problems with installation, you can check [code of demo app](https:/
 By default, the gem provides localized phrases for Russian and English languages. You can easily override any of them. [Here is](https://github.com/kirs/inboxes/blob/master/config/locales/en.yml) list of all I18n phrases.
 
 #Integration with Faye
+
+You can watch the demo of integration [on YouTube](http://youtu.be/c12gey9DvyU)
 
 1. Add `gem "faye"` to your Gemfile and run `bundle install`. Install Faye by [the screencast](http://railscasts.com/episodes/260-messaging-with-faye)
 2. Create `messaging.js` in `app/assets/javascripts/` with these line: `= require inboxes/faye`
