@@ -1,6 +1,6 @@
 module Inboxes
   module ActiveRecordExtension
-    def inboxes(options = {})
+    def has_inboxes(options = {})
       # field  = options[:as]     || name
       # prefix = options[:prefix] || "with"
       

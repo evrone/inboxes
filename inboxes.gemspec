@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "inboxes"
   s.version     = Inboxes::VERSION
   s.authors     = ["Kir Shatrov"]
-  s.email       = ["razor.psp@gmail.com"]
+  s.email       = ["shatrov@me.com"]
   s.homepage    = "http://evrone.com/"
   s.summary     = %q{Messaging system for Rails 3 app}
   s.description = %q{Messaging system for Rails 3 app}
@@ -25,10 +25,10 @@ Gem::Specification.new do |s|
   # s.add_runtime_dependency "inherited_resources"
   
   # s.add_development_dependency 'dm-sqlite-adapter', ['>= 1.1.0']
-  s.add_development_dependency 'rspec', ['>= 0']
-  s.add_development_dependency 'rspec-rails', ['>= 0']
+  # s.add_development_dependency 'rspec', ['>= 0']
+  # s.add_development_dependency 'rspec-rails', ['>= 0']
   # s.add_development_dependency 'rr', ['>= 0']
   # s.add_development_dependency 'steak', ['>= 0']
   # s.add_development_dependency 'capybara', ['>= 0']
-  s.add_development_dependency 'database_cleaner', ['>= 0']
+  # s.add_development_dependency 'database_cleaner', ['>= 0']
 end
