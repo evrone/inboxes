@@ -48,6 +48,11 @@ You can watch the demo of integration [on YouTube](http://youtu.be/c12gey9DvyU)
 5. Faye installation is finished. If you have any troubles, check the [example app](https://github.com/kirs/inboxes-app/)
 
 *While testing Inboxes with Faye, don't forget to run it: `rackup faye.ru -s thin -E production`*
+You can read more about Faye on it's [official page](http://faye.jcoglan.com/).
+
+### Hints
+
+1. If you want to add breadcrumbs to Inboxes pages, we recommend you to use [crummy gem](https://github.com/zachinglis/crummy). It allows to define breadcrumbs in views.
 
 ##Todo
 
