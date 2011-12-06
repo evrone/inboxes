@@ -1,19 +1,17 @@
-
 class Discussion < ActiveRecord::Base
   attr_accessor :recipient_tokens, :recipient_ids
   attr_reader :recipient_ids
 
   # paginates_per 10
 
-  # создатель
+  # creater
   has_many :messages, :dependent => :destroy
 
-  # участники
+  # participants of discussion (speakers)
   has_many :speakers, :dependent => :destroy
   has_many :users, :through => :speakers
 
-  # отметки о прочтении юзеров
-  
+  # marks about read/unread
   scope :unread_for, (lambda do |user_or_user_id|
     user = user_or_user_id.is_a?(User) ? user_or_user_id.id : user_or_user_id
     joins(:speakers).where("discussions.updated_at >= speakers.updated_at AND speakers.user_id = ?", user)
@@ -21,12 +19,10 @@ class Discussion < ActiveRecord::Base
 
   accepts_nested_attributes_for :messages
 
-  validate :check_that_has_at_least_two_users # не даем создать дискуссию, у которой нет получателей
+  validate :check_that_has_at_least_two_users # don't allow to create discussion, if there is no creator
 
-  # добавляем записи об указанных собеседников
+  # mark as read
   after_save(:on => :create) do
-    # Rails.logger.info("Repicients ids: #{recipient_ids.inspect}")
-
     if recipient_ids.kind_of?(Array)
       recipient_ids.uniq!
       recipient_ids.each do |id|
@@ -64,8 +60,8 @@ class Discussion < ActiveRecord::Base
     speaker ? true : false
   end
 
-  # проверяет, есть ли уже беседа между пользователями
-  # TODO вынести в отдельный метод а в этом возращать true/false, а то неправославно как-то
+  # don't allow to create discussion with user, if discussion with this user already exists
+  # TODO move to separated method and return boolean value
   def self.find_between_users(user, user2)
     dialog = nil
     discussions = self.joins(:speakers).includes(:users).where("speakers.user_id = ?", user.id)
@@ -76,17 +72,11 @@ class Discussion < ActiveRecord::Base
     dialog
   end
 
-  # приватная/групповая
+  # private/group discussion
   def private?
     self.users.size <= 2
   end
 
-  # дата последнего сообщения в дискуссии
-  # def last_message_at
-  #   self.messages.last ? self.messages.last.created_at : nil
-  # end
-
-  # проверка, является ли дискуссия непрочитанной для пользователя
   def unread_for?(user)
     speaker = find_speaker_by_user(user)
     if speaker
@@ -96,7 +86,6 @@ class Discussion < ActiveRecord::Base
     end
   end
 
-  # пометить как прочитанная
   def mark_as_read_for(user)
     speaker = Speaker.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
     # flag.update_attributes(:updat => Time.zone.now)
