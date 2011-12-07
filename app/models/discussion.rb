@@ -55,7 +55,7 @@ class Discussion < ActiveRecord::Base
   end
 
   def can_participate?(user)
-    find_speaker_by_user(user)
+    !!find_speaker_by_user(user)
   end
 
   # don't allow to create discussion with user, if discussion with this user already exists
