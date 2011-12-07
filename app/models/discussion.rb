@@ -51,13 +51,11 @@ class Discussion < ActiveRecord::Base
   end
 
   def user_invited_at(user)
-    speaker = find_speaker_by_user(user)
-    speaker.created_at
+    find_speaker_by_user(user).created_at
   end
 
   def can_participate?(user)
-    speaker = find_speaker_by_user(user)
-    speaker ? true : false
+    !!find_speaker_by_user(user)
   end
 
   # don't allow to create discussion with user, if discussion with this user already exists
