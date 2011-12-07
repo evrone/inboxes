@@ -67,7 +67,7 @@ class Discussion < ActiveRecord::Base
     discussions = self.joins(:speakers).includes(:users).where("speakers.user_id = ?", user.id)
     Rails.logger.info "Searching for ids: #{user.id}, #{user2.id}"
     discussions.each do |discussion|
-      dialog = discussion if discussion.private? && ([discussion.users.first, discussion.users.last] - [user, user2]).length.zero?
+      dialog = discussion if discussion.private? && ([discussion.users.first, discussion.users.last] - [user, user2]).empty?
     end
     dialog
   end
