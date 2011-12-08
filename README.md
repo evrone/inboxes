@@ -60,8 +60,11 @@ You can read more about Faye on it's [official page](http://faye.jcoglan.com/).
 
 - Add RSpec tests
 
-##Authors
+##Contributors
 
 - [Kir Shatrov](https://github.com/kirs/) (Evrone Company)
+- [Andrey Ognevsky](https://github.com/ognevsy/) (Evrone Company)
+- [Alexander Brodyanoj](https://github.com/dom1nga)
+- [Dmitriy Kiriyenko](https://github.com/dmitriy-kiriyenko)
 
 ##Feel free for pull requests!
