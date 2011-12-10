@@ -6,7 +6,7 @@ require "inboxes/active_record_extension"
 
 
 module Inboxes
-  
+
   def self.configure(&block)
     yield @config ||= Inboxes::Configuration.new
   end
@@ -25,11 +25,11 @@ module Inboxes
     config_accessor :faye_enabled
 
     def param_name
-      config.param_name.respond_to?(:call) ? config.param_name.call() : config.param_name 
+      config.param_name.respond_to?(:call) ? config.param_name.call() : config.param_name
     end
   end
-  
+
   # adding method inboxes for models
   ActiveRecord::Base.extend(Inboxes::ActiveRecordExtension)
-  
+
 end

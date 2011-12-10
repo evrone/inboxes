@@ -20,7 +20,7 @@ Remember that unfortunately, Inboxes reserve 3 resources names: Discussion, Mess
 
 1. Add `gem "inboxes", "~> 0.1.2"` to the `Gemfile` and run `bundle install`
 2. Execute `rails generate inboxes:install`. This command will generate migration for messaging system. Don't forget to run migrations: `rake db:migrate`
-3. Add `inboxes` to your User model like [here](https://gist.github.com/1330080)
+3. Add `has_inboxes` to your User model like [here](https://gist.github.com/1330080)
 4. Now Inboxes are ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
 
 Default Inboxes views are ugly, so you can copy into your app and make anything with them: `rails generate inboxes:views`
@@ -38,9 +38,9 @@ You can watch the demo of integration [on YouTube](http://youtu.be/c12gey9DvyU)
 2. Create `messaging.js` in `app/assets/javascripts/` with this line: `//= require inboxes/faye`
 
 3. Copy or replace 2 views from Inboxes example app to your application: [app/views/inboxes/messages/_form](https://github.com/kirs/inboxes-app/blob/master/app/views/inboxes/messages/_form.html.haml) and [app/views/inboxes/messages/create](https://github.com/kirs/inboxes-app/blob/master/app/views/inboxes/messages/create.js.erb)
- 
+
 4. Add config parameters to your application config (last 2 are not necessary):
-   
+
 ```ruby
 config.inboxes.faye_enabled = true
 config.inboxes.faye_host = "inboxes-app.dev" # localhost by default

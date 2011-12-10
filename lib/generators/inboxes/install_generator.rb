@@ -5,9 +5,9 @@ module Inboxes
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include Rails::Generators::Migration
-      
+
       source_root File.expand_path("../templates", __FILE__)
-      
+
       # desc "Generates migration for Discussion, Message, Speaker and DiscussionView models"
 
       def self.orm

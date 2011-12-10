@@ -12,6 +12,6 @@
         = link_to discussion.users.collect{|u| u[Inboxes::config.user_name]}.join(', '), discussion
       %td
         = discussion.unread_for?(current_user) ? "Yes" : "No"
-  
+
 %p
   = link_to "Create new", new_discussion_path

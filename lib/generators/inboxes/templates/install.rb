@@ -9,14 +9,14 @@ class InstallInboxes < ActiveRecord::Migration
       t.references :user
       t.references :discussion
       t.text :body
-      
+
       t.timestamps
     end
-    
+
     create_table :speakers do |t|
       t.references :user
       t.references :discussion
-      
+
       t.timestamps
     end
   end
