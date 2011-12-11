@@ -84,6 +84,12 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  # return amount of unreaded messages for current discussion
+  def count_unread_mess(user)
+    speaker = find_speaker_by_user(user)
+    messages.where("updated_at > ?", speaker.updated_at ).where("user_id != ?", speaker.id ).count
+  end
+
   def mark_as_read_for(user)
     speaker = Speaker.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
     # flag.update_attributes(:updat => Time.zone.now)
