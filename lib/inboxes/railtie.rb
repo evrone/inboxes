@@ -4,7 +4,7 @@ require "inboxes/ability"
 module Inboxes
   class Railtie < ::Rails::Railtie
     config.inboxes = ActiveSupport::OrderedOptions.new
-    
+
     initializer "inboxes.configure" do |app|
       Inboxes.configure do |config|
         config.user_name = app.config.inboxes[:user_name] || "email"
@@ -15,7 +15,7 @@ module Inboxes
 
       # app.config.middleware.insert_before "::Rails::Rack::Logger", "Inboxes::Middleware"
     end
-    
+
     # def self.activate
     #   Ability.register_ability(InboxesAbility)
     # end

@@ -5,7 +5,7 @@ module Inboxes
     def self.activate
       Ability.register_ability(InboxesAbility)
     end
-    
+
     config.to_prepare &method(:activate).to_proc
   end
 end

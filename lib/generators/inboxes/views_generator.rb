@@ -5,7 +5,7 @@ module Inboxes
     class ViewsGenerator < Rails::Generators::Base
       source_root File.expand_path('../../../../app/views', __FILE__)
       #class_option :template_engine, :type => :string, :aliases => '-e', :desc => 'Template engine for the views. Available options are "erb" and "haml".'
-      
+
       # TODO support of both haml and erb
       def copy_or_fetch
         filename_pattern = File.join self.class.source_root, "*" #/*.html.#{template_engine}"
