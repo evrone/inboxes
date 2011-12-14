@@ -85,7 +85,7 @@ class Discussion < ActiveRecord::Base
   end
 
   # return amount of unreaded messages for current discussion
-  def count_unread_mess(user)
+  def unread_messages_count_for(user)
     speaker = find_speaker_by_user(user)
     messages.where("updated_at > ?", speaker.updated_at ).where("user_id != ?", speaker.id ).count
   end
