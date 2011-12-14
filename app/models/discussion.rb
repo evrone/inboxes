@@ -84,16 +84,22 @@ class Discussion < ActiveRecord::Base
     end
   end
 
+  # return amount of unreaded messages for current discussion
+  def count_unread_mess(user)
+    speaker = find_speaker_by_user(user)
+    messages.where("updated_at > ?", speaker.updated_at ).where("user_id != ?", speaker.id ).count
+  end
+
   def mark_as_read_for(user)
     speaker = Speaker.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
     # flag.update_attributes(:updat => Time.zone.now)
     speaker.touch
   end
-  
+
   def find_speaker_by_user user
     Speaker.find_by_discussion_id_and_user_id(self.id, user.id)
   end
-  
+
   private
 
   def check_that_has_at_least_two_users

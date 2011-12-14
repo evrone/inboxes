@@ -16,13 +16,13 @@
     = f.label :user_id, "Add speaker"
     = f.collection_select :user_id, available_users, :id, :name
     = f.submit "Add"
-    
-  
+
+
 %h3 Messages
 
 #messages_box
   = render @discussion.messages, :as => :message
-  
+
 %h3 Add message
 = render "inboxes/messages/form"
 
