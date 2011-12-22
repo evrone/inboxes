@@ -59,6 +59,9 @@ You can read more about Faye on it's [official page](http://faye.jcoglan.com/).
 ##Todo
 
 - Add RSpec tests
+- Add ability to inherit Inboxes controllers
+- Add Pusher capability
+- Email notifications and the ability to answer received emails like in Github issues (#7)
 
 ##Contributors
 
