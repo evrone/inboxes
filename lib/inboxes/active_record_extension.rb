@@ -5,11 +5,7 @@ module Inboxes
       # prefix = options[:prefix] || "with"
 
       has_many :speakers, :dependent => :destroy
-      has_many :discussions, :through => :speakers
-    end
-
-    def acts_as_discussable
-      has_many :discussions, :as => :discussable
+      has_many :discussions, :as => :discussable, :through => :speakers
     end
   end
 end
