@@ -7,5 +7,9 @@ module Inboxes
       has_many :speakers, :dependent => :destroy
       has_many :discussions, :through => :speakers
     end
+
+    def acts_as_discussable
+      has_many :discussions, :as => :discussable
+    end
   end
 end

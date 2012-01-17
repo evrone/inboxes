@@ -7,6 +7,8 @@ class Discussion < ActiveRecord::Base
   # creater
   has_many :messages, :dependent => :destroy
 
+  belongs_to :discussable, :polymorphic => true
+
   # participants of discussion (speakers)
   has_many :speakers, :dependent => :destroy
   has_many :users, :through => :speakers
