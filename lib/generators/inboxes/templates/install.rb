@@ -2,6 +2,7 @@ class InstallInboxes < ActiveRecord::Migration
   def self.up
     create_table :discussions do |t|
       t.integer :messages_count, :default => 0 # counter cache
+      t.references :discussable
       t.timestamps
     end
 
