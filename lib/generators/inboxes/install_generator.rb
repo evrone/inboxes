@@ -8,15 +8,11 @@ module Inboxes
 
       source_root File.expand_path("../templates", __FILE__)
 
-      # desc "Generates migration for Discussion, Message, Speaker and DiscussionView models"
+      desc "Generates migration for Inboxes"
 
       def self.orm
         Rails::Generators.options[:rails][:orm]
       end
-
-      # def self.source_root
-        # File.join(File.dirname(__FILE__), 'templates', (orm.to_s unless orm.class.eql?(String)) )
-      # end
 
       def self.orm_has_migration?
         [:active_record].include? orm
