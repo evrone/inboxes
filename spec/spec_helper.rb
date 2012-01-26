@@ -1,8 +1,8 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rails'
-# require 'inboxes'
-require 'devise'
+require 'active_record'
+require 'inboxes'
 # require 'database_cleaner'
 # Ensure we use 'syck' instead of 'psych' in 1.9.2
 # RubyGems >= 1.5.0 uses 'psych' on 1.9.2, but
@@ -20,10 +20,10 @@ require 'rspec/rails'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-RSpec.configure do |config|
-  config.mock_with :rr
-  config.before :all do
-#     ActiveRecord::Base.connection.execute 'CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255))' unless ActiveRecord::Base.connection.table_exists? 'users'
-    # CreateAllTables.up unless ActiveRecord::Base.connection.table_exists? 'users'
-  end
-end
+# RSpec.configure do |config|
+#   config.mock_with :rr
+#   config.before :all do
+# #     ActiveRecord::Base.connection.execute 'CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255))' unless ActiveRecord::Base.connection.table_exists? 'users'
+#     # CreateAllTables.up unless ActiveRecord::Base.connection.table_exists? 'users'
+#   end
+# end

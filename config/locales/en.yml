@@ -10,6 +10,6 @@ en:
     discussions:
       started: "Discussion started"
       leaved: "You leave the discussion"
-      exists: "Discussion between you and %{user} already exists"
+      already_exists: "Discussion between you and %{user} already exists"
       can_not_participate: "You are not listed in this discussion"
       choose_at_least_one_recipient: "You should choose at least one recipient of discussion"

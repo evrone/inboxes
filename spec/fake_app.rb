@@ -2,6 +2,14 @@ require 'active_record'
 require 'action_controller/railtie'
 require 'action_view/railtie'
 
+require "cancan"
+require "cancan/ability"
+require "cancan/controller_resource"
+require "cancan/controller_additions"
+
+require 'devise'
+require 'devise/orm/active_record'
+
 # database
 ActiveRecord::Base.configurations = {'test' => {:adapter => 'sqlite3', :database => ':memory:'}}
 ActiveRecord::Base.establish_connection('test')
@@ -13,10 +21,7 @@ app.config.session_store :cookie_store, :key => "_myapp_session"
 app.config.active_support.deprecation = :log
 app.initialize!
 
-# routes
-app.routes.draw do
-  devise_for :users
-end
+require 'devise_config'
 
 # models
 class User < ActiveRecord::Base
@@ -27,19 +32,10 @@ class User < ActiveRecord::Base
   has_inboxes
 end
 
-# controllers
-class ApplicationController < ActionController::Base
-  before_filter :assign_unread_discussions
-  
-  private
-  
-  def assign_unread_discussions
-    @unread_discussions_count = Discussion.unread_for(current_user).count if user_signed_in?
-  end
+# routes
+app.routes.draw do
+  devise_for :users
 end
-
-# helpers
-Object.const_set(:ApplicationHelper, Module.new)
 
 #migrations
 ActiveRecord::Base.silence do
@@ -85,3 +81,17 @@ ActiveRecord::Base.silence do
     end
   end
 end
+
+# controllers
+class ApplicationController < ActionController::Base
+  before_filter :assign_unread_discussions
+  
+  private
+  
+  def assign_unread_discussions
+    @unread_discussions_count = Discussion.unread_for(current_user).count if user_signed_in?
+  end
+end
+
+# helpers
+Object.const_set(:ApplicationHelper, Module.new)
