@@ -3,9 +3,9 @@ require "inboxes/version"
 require "inboxes/railtie"
 require "inboxes/engine"
 require "inboxes/active_record_extension"
+require "cancan"
 
 module Inboxes
-
   def self.configure(&block)
     yield @config ||= Inboxes::Configuration.new
   end
@@ -30,5 +30,4 @@ module Inboxes
 
   # adding method inboxes for models
   ActiveRecord::Base.extend(Inboxes::ActiveRecordExtension)
-
 end

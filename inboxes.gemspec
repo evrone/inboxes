@@ -21,12 +21,14 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "ruby-debug"
   s.add_runtime_dependency "haml-rails"
-  s.add_runtime_dependency "cancan", ['>= 0']
-  # s.add_runtime_dependency "inherited_resources"
+  s.add_runtime_dependency "devise"
+  s.add_runtime_dependency "rails"
+  s.add_runtime_dependency "cancan"
   
-  # s.add_development_dependency 'dm-sqlite-adapter', ['>= 1.1.0']
-  # s.add_development_dependency 'rspec', ['>= 0']
-  # s.add_development_dependency 'rspec-rails', ['>= 0']
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rspec', ['>= 0']
+  s.add_development_dependency 'factory_girl', ['~> 1.2']
+  s.add_development_dependency 'rspec-rails', ['>= 0']
   # s.add_development_dependency 'rr', ['>= 0']
   # s.add_development_dependency 'steak', ['>= 0']
   # s.add_development_dependency 'capybara', ['>= 0']

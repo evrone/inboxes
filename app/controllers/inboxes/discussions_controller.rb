@@ -5,14 +5,12 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
   def index
     @discussions = current_user.discussions
   end
-
+  
   def show
-    # raise current_user.inspect
     @discussion.mark_as_read_for(current_user)
   end
-
+  
   def new
-    # @discussion = Discussion.new
     @discussion.messages.build
   end
 
@@ -32,11 +30,10 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
   end
 
   private
-
+  
   def load_and_check_discussion_recipient
     # initializing model for new and create actions
     @discussion = Discussion.new(params[:discussion].presence || {})
-    # @discussion.recipient_tokens = params[:recipients] if params[:recipients] # pre-population
 
     # checking if discussion with this user already exists
     if @discussion.recipient_ids && @discussion.recipient_ids.size == 1
@@ -48,7 +45,7 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
           Message.create(:discussion => discussion, :user => current_user, :body => message.body) if message.body
         end
         # redirecting to that existing object
-        redirect_to discussion_url(discussion), :notice => t("inboxes.discussions.exists", :user => user[Inboxes::config.user_name])
+        redirect_to discussion_url(discussion), :notice => t("inboxes.discussions.already_exists", :user => user[Inboxes::config.user_name])
       end
     end
   end
