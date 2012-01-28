@@ -2,8 +2,6 @@ class Discussion < ActiveRecord::Base
   attr_accessor :recipient_tokens, :recipient_ids
   attr_reader :recipient_ids
 
-  # paginates_per 10
-
   # creater
   has_many :messages, :dependent => :destroy
 

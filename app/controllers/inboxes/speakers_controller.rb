@@ -1,8 +1,6 @@
 class Inboxes::SpeakersController < Inboxes::BaseController
-  # before_filter :init_discussion
   load_and_authorize_resource :discussion
   load_resource :speaker, :through => :discussion, :shallow => true
-  # load_and_authorize_resource
 
   def create
     raise ActiveRecord::RecordNotFound unless params[:speaker] && params[:speaker][:user_id]

@@ -1,5 +1,4 @@
 require 'rails'
-require "inboxes/ability"
 
 module Inboxes
   class Railtie < ::Rails::Railtie

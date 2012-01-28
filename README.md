@@ -5,6 +5,7 @@ Inboxes is a young messaging system for Rails app. It:
 - provides 3 models for developers: Discussion, Message and Speaker
 - read/unread discussions counter
 - any user can be invited to discussion by the member of this discussion, so you can chat with unlimited number of users
+- have configurable behavior via CanCan Ability
 
 ##Upgrading from 0.1 to current version (0.2)
 
@@ -13,7 +14,6 @@ Inboxes is a young messaging system for Rails app. It:
 ##Requirements and recommendations
 
 Inboxes requires Rails 3.x and [Devise](https://github.com/plataformatec/devise) for user identification (surely, messaging system is not possible without users). Now the gem is tested only with Ruby 1.8.7 and REE.
-
 We recommend to use Inboxes with [Faye](https://github.com/jcoglan/faye), because it's really sexy with it.
 
 Remember that unfortunately, Inboxes reserve 3 resources names: Discussion, Message and Speaker.
@@ -22,12 +22,21 @@ Since version 0.2.0, it is possible to add `has_inboxes` option to any model. Fo
 
 ##Installation
 
-*Make sure that Devise is already installed and configured in your app!*
+*Make sure that [Devise](https://github.com/plataformatec/devise) and [CanCan](https://github.com/ryanb/cancan) are already installed and configured in your app!*
 
 1. Add `gem "inboxes", "~> 0.2.0"` to the `Gemfile` and run `bundle install`
 2. Execute `rails generate inboxes:install`. This command will generate migration for messaging system. Don't forget to run migrations: `rake db:migrate`
 3. Add `has_inboxes` to your User model like [here](https://gist.github.com/1330080).
-4. Now Inboxes are ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
+4. Add CanCan abilities to manage Inboxes models:
+
+```ruby
+can [:index, :create], Discussion
+can :read, Discussion do |discussion|
+  discussion.can_participate?(user)
+end
+```
+
+5. Now Inboxes are ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
 
 Default Inboxes views are ugly, so you can copy into your app and make anything with them: `rails generate inboxes:views`
 If you have problems with installation, you can check [code of demo app](https://github.com/kirs/inboxes-app)
@@ -55,8 +64,8 @@ config.inboxes.faye_port = 9292 # 9292 by default
 
 5. Faye installation is finished. If you have any troubles, check the [example app](https://github.com/kirs/inboxes-app/)
 
-*While testing Inboxes with Faye, don't forget to run it: `rackup faye.ru -s thin -E production`*
-You can read more about Faye on it's [official page](http://faye.jcoglan.com/).
+*While running Inboxes with Faye, don't forget to run Faye worker it: `rackup faye.ru -s thin -E production`*
+You can read more about that on it's [official page](http://faye.jcoglan.com/).
 
 ### Hints
 
@@ -64,8 +73,7 @@ You can read more about Faye on it's [official page](http://faye.jcoglan.com/).
 
 ##Todo
 
-- Add RSpec tests
-- Add ability to inherit Inboxes controllers
+- Finalize RSpec tests (are located in [rspec branch](https://github.com/evrone/inboxes/tree/rspec))
 - Add Pusher capability
 - Email notifications and the ability to answer received emails like in Github issues (#7)
 
