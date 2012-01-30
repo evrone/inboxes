@@ -103,7 +103,7 @@ class Discussion < ActiveRecord::Base
   private
 
   def check_that_has_at_least_two_users
-    errors.add :recipient_tokens, t("inboxes.discussions.choose_at_least_one_recipient") if !self.recipient_ids || self.recipient_ids.size < 2
+    errors.add :recipient_tokens, I18n.t("inboxes.discussions.choose_at_least_one_recipient") if !self.recipient_ids || self.recipient_ids.size < 2
   end
 
 end

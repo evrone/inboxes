@@ -25,9 +25,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "rails"
   s.add_runtime_dependency "cancan"
   
+  s.add_development_dependency "pg"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency 'rspec', ['>= 0']
-  s.add_development_dependency 'factory_girl', ['~> 1.2']
+  s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'rspec-rails', ['>= 0']
   # s.add_development_dependency 'rr', ['>= 0']
   # s.add_development_dependency 'steak', ['>= 0']

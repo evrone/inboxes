@@ -1,17 +1,18 @@
 require 'active_record'
 require 'action_controller/railtie'
-require 'action_view/railtie'
+# require 'action_view/railtie'
 
-require "cancan"
-require "cancan/ability"
-require "cancan/controller_resource"
-require "cancan/controller_additions"
+# require "cancan"
+# require "cancan/ability"
+# require "cancan/controller_resource"
+# require "cancan/controller_additions"
 
 require 'devise'
 require 'devise/orm/active_record'
 
 # database
-ActiveRecord::Base.configurations = {'test' => {:adapter => 'sqlite3', :database => ':memory:'}}
+ActiveRecord::Base.configurations = {'test' => {:adapter => 'postgresql', :database => 'inboxes_test', :username => "postgres"}}
+# ActiveRecord::Base.configurations = {'test' => {:adapter => 'sqlite3', :database => ':memory:'}}
 ActiveRecord::Base.establish_connection('test')
 
 # config
@@ -28,7 +29,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true
   has_inboxes
 end
 
