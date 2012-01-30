@@ -1,0 +1,10 @@
+before_script:
+  - "psql -c 'create database inboxes_test;' -U postgres"
+language: ruby
+rvm:
+  - 1.8.7
+  - 1.9.2
+  - 1.9.3
+notifications:
+  email:
+    - shatrov@me.com
