@@ -1,5 +1,7 @@
 #Inboxes
 
+[![Build Status](https://secure.travis-ci.org/evrone/inboxes.png)](http://travis-ci.org/evrone/inboxes)
+
 Inboxes is a young messaging system for Rails app. It:
 
 - provides 3 models for developers: Discussion, Message and Speaker
