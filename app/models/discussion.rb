@@ -92,7 +92,6 @@ class Discussion < ActiveRecord::Base
 
   def mark_as_read_for(user)
     speaker = Speaker.find_or_create_by_user_id_and_discussion_id(user.id, self.id)
-    # flag.update_attributes(:updat => Time.zone.now)
     speaker.touch
   end
 
