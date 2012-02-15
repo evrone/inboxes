@@ -8,6 +8,7 @@ en:
       added: "Speaker was added to discussion"
       removed: "Speaker was removed from discussion"
     discussions:
+      removed: "Discussion removed"
       started: "Discussion started"
       leaved: "You leave the discussion"
       already_exists: "Discussion between you and %{user} already exists"

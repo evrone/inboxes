@@ -13,6 +13,17 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
   def new
     @discussion.messages.build
   end
+  
+  def destroy
+    @discussion.destroy
+    
+    flash[:notice] = t("inboxes.discussions.removed")
+    begin
+      redirect_to :back
+    rescue ActionController::RedirectBackError
+      redirect_to discussions_url
+    end
+  end
 
   def create
     @discussion.add_recipient_token current_user.id

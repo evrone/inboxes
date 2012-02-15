@@ -12,6 +12,7 @@ ru:
       already_exists: "Дискуссия между вами и %{user} уже существует"
       can_not_participate: "Вы не состоите в этой дискуссии"
       choose_at_least_one_recipient: "Укажите хотя бы одного получателя"
+      removed: "Переписка удалена"
     speakers:
       added: "Собеседник успешно добавлен"
       removed: "Собеседник удален"
