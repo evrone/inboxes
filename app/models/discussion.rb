@@ -42,7 +42,7 @@ class Discussion < ActiveRecord::Base
 
   def add_speaker(user)
     raise ArgumentError, "You can add speaker only to existing Discussion. Save your the Discussion object firstly" if new_record?
-    Speaker.create(:discussion => self, :user => user)
+    Speaker.create(:discussion => self, :user => user, :updated_at => self.updated_at)
   end
 
   def remove_speaker(user)
