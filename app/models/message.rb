@@ -1,4 +1,6 @@
 class Message < ActiveRecord::Base
+  
+  attr_accessible :body
 
   default_scope order(:created_at)
 
