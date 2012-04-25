@@ -11,8 +11,11 @@ require 'devise'
 require 'devise/orm/active_record'
 
 # database
-ActiveRecord::Base.configurations = {'test' => {:adapter => 'postgresql', :database => 'inboxes_test', :username => "postgres"}}
-# ActiveRecord::Base.configurations = {'test' => {:adapter => 'sqlite3', :database => ':memory:'}}
+if ENV['TRAVIS'].present?
+  ActiveRecord::Base.configurations = {'test' => {:adapter => 'postgresql', :database => 'inboxes_test', :username => "postgres"}}
+else
+  ActiveRecord::Base.configurations = {'test' => {:adapter => 'sqlite3', :database => ':memory:'}}
+end
 ActiveRecord::Base.establish_connection('test')
 
 # config
