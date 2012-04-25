@@ -88,5 +88,6 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 - [Dmitriy Kiriyenko](https://github.com/dmitriy-kiriyenko)
 - [Alexey Poimtsev](https://github.com/alec-c4) ([http://progress-engine.ru/](Progress Engine))
 - [isqad88](https://github.com/isqad88/)
+- [Chris Sargeant](https://github.com/liothen/)
 
 ##Feel free for pull requests!
