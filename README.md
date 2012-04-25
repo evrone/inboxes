@@ -79,6 +79,8 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 - Add Pusher capability
 - Email notifications and the ability to answer received emails like in Github issues (#7)
 
+## [Changelog](https://github.com/evrone/inboxes/blob/master/CHANGELOG.md)
+
 ##Contributors
 
 - [Kir Shatrov](https://github.com/kirs/) (Evrone Company)
