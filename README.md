@@ -82,9 +82,11 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 ##Contributors
 
 - [Kir Shatrov](https://github.com/kirs/) (Evrone Company)
+- [Nikolay Seskin](https://github.com/finist/) (Evrone Company)
 - [Andrey Ognevsky](https://github.com/ognevsy/) (Evrone Company)
 - [Alexander Brodyanoj](https://github.com/dom1nga)
 - [Dmitriy Kiriyenko](https://github.com/dmitriy-kiriyenko)
 - [Alexey Poimtsev](https://github.com/alec-c4) ([http://progress-engine.ru/](Progress Engine))
+- [isqad88](https://github.com/isqad88/)
 
 ##Feel free for pull requests!
