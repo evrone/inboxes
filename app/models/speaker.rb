@@ -1,6 +1,7 @@
 class Speaker < ActiveRecord::Base
   belongs_to :user
   belongs_to :discussion
+  attr_accessible :discussion, :user, :updated_at
 
   validates_uniqueness_of :user_id, :scope => :discussion_id
   validates :user, :discussion, :presence => true
