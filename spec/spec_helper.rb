@@ -14,7 +14,7 @@ require 'factory_girl'
 if RUBY_VERSION >= '1.9.2'
   YAML::ENGINE.yamler = 'syck'
 end
-# require 'fake_gem'
+
 require 'fake_app'
 
 # Requires supporting files with custom matchers and macros, etc,
