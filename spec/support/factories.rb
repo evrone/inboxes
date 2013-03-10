@@ -2,6 +2,10 @@ Factory.sequence :email do |n|
   "email#{n}@example.com"
 end
 
+Factory.sequence :string do |n|
+  "Lorem ipsum #{n}"
+end
+
 FactoryGirl.define do
 
   factory :user do
