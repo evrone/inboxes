@@ -20,6 +20,12 @@ class InstallInboxes < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :discussions, [ :discussable_id, :discussable_type ], :name => 'discussions_discussable_idx'
+    add_index :messages, :user_id
+    add_index :messages, :discussion_id
+    add_index :speakers, :user_id
+    add_index :speakers, :discussion_id
   end
 
   def self.down
