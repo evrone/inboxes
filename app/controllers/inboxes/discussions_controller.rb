@@ -5,23 +5,23 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
   def index
     @discussions = current_user.discussions
   end
-  
+
   def show
     @discussion.mark_as_read_for(current_user)
   end
-  
+
   def new
     @discussion.messages.build
   end
-  
+
   def destroy
     @discussion.destroy
-    
+
     flash[:notice] = t("inboxes.discussions.removed")
     begin
       redirect_to :back
     rescue ActionController::RedirectBackError
-      redirect_to discussions_url
+      redirect_to inboxes.discussions_url
     end
   end
 
@@ -34,14 +34,14 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
     end
 
     if @discussion.save
-      redirect_to @discussion, :notice => t("inboxes.discussions.started")
+      redirect_to inboxes.discussion_url(@discussion), :notice => t("inboxes.discussions.started")
     else
       render :action => "new"
     end
   end
 
   private
-  
+
   def load_and_check_discussion_recipient
     # initializing model for new and create actions
     @discussion = Discussion.new(params[:discussion].presence || {})
@@ -56,7 +56,7 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
           Message.create(:discussion => discussion, :user => current_user, :body => message.body) if message.body
         end
         # redirecting to that existing object
-        redirect_to discussion_url(discussion), :notice => t("inboxes.discussions.already_exists", :user => user[Inboxes::config.user_name])
+        redirect_to inboxes.discussion_url(discussion), :notice => t("inboxes.discussions.already_exists", :user => user[Inboxes::config.user_name])
       end
     end
   end

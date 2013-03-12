@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Inboxes::Engine.routes.draw do
 
   resources :discussions, :except => :edit, :module => :inboxes do
     resources :messages, :only => [:create, :index]
