@@ -1,5 +1,5 @@
 .message_form
-  = form_for Message.new, :url => discussion_messages_path(@discussion.id), :method => :post do |f|
+  = form_for Message.new, :url => inboxes.discussion_messages_path(@discussion.id), :method => :post do |f|
     %p
       = f.label :body
       %br

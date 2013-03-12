@@ -8,11 +8,11 @@
 - @discussion.speakers.each do |speaker|
   %div
     = speaker.user[Inboxes::config.user_name]
-    = link_to '(remove)', discussion_speaker_path(@discussion, speaker), :method => :delete
+    = link_to '(remove)', inboxes.discussion_speaker_path(@discussion, speaker), :method => :delete
 
 - available_users = User.all.map { |u| u unless @discussion.users.include?(u) }.delete_if { |w| w.nil? }
 - if available_users.any?
-  = form_for Speaker.new, :url => discussion_speakers_path(@discussion) do |f|
+  = form_for Speaker.new, :url => inboxes.discussion_speakers_path(@discussion) do |f|
     = f.label :user_id, "Add speaker"
     = f.collection_select :user_id, available_users, :id, :name
     = f.submit "Add"
@@ -27,5 +27,5 @@
 = render "inboxes/messages/form"
 
 %p
-  = link_to "Leave discussion", discussion_speaker_path(@discussion, @discussion.find_speaker_by_user(current_user)), :method => :delete unless @discussion.private?
-  = link_to "All discussions", discussions_path
+  = link_to "Leave discussion", inboxes.discussion_speaker_path(@discussion, @discussion.find_speaker_by_user(current_user)), :method => :delete unless @discussion.private?
+  = link_to "All discussions", inboxes.discussions_path
