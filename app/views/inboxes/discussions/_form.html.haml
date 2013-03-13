@@ -1,4 +1,4 @@
-= form_for @discussion do |f|
+= form_for @discussion, :url => inboxes.discussions_path do |f|
   %p
     = f.label :recipient_tokens
     %br

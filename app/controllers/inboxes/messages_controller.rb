@@ -8,7 +8,7 @@ class Inboxes::MessagesController < Inboxes::BaseController
     @message.save
 
     respond_to do |format|
-      format.html { redirect_to @message.discussion }
+      format.html { redirect_to inboxes.discussion_url(@message.discussion) }
       format.js
     end
   end
