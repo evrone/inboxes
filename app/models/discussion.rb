@@ -17,7 +17,7 @@ class Discussion < ActiveRecord::Base
     user = user_or_user_id.is_a?(User) ? user_or_user_id.id : user_or_user_id
     joins(:speakers).where("discussions.updated_at >= speakers.updated_at AND speakers.user_id = ?", user)
   end)
-  
+
   default_scope order('updated_at DESC')
 
   accepts_nested_attributes_for :messages
@@ -45,7 +45,12 @@ class Discussion < ActiveRecord::Base
 
   def add_speaker(user)
     raise ArgumentError, "You can add speaker only to existing Discussion. Save your the Discussion object firstly" if new_record?
-    Speaker.create(:discussion => self, :user => user, :updated_at => self.updated_at)
+
+    Speaker.create do |s|
+      s.discussion = self
+      s.user = user
+      s.updated_at = updated_at
+    end
   end
 
   def remove_speaker(user)
