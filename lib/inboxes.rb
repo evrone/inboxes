@@ -3,7 +3,6 @@ require "inboxes/version"
 require "inboxes/railtie"
 require "inboxes/engine"
 require "inboxes/active_record_extension"
-require "cancan"
 
 module Inboxes
   def self.configure(&block)
