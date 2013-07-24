@@ -2,6 +2,10 @@
 
 [![Build Status](https://secure.travis-ci.org/evrone/inboxes.png)](http://travis-ci.org/evrone/inboxes)
 
+## Rails 4 status
+
+Gem is not ready for Rails 4 (honestly, I didn't see any requests yet). If you need it, I would be happy to collaborate and make it capable with new Rails. Don't hesitate to drop me a line: [shatrov@me.com](shatrov@me.com)
+
 Inboxes is a young messaging system for Rails app. It:
 
 - provides 3 models for developers: Discussion, Message and Speaker
@@ -9,13 +13,9 @@ Inboxes is a young messaging system for Rails app. It:
 - any user can be invited to discussion by the member of this discussion, so you can chat with unlimited number of users
 - have configurable behavior via CanCan Ability
 
-##Upgrading from 0.1 to current version (0.2)
+##Requirements
 
-**Run `rails generate inboxes:upgrade_discussible` and then roll up the migration. Your DB is upgraded!**
-
-##Requirements and recommendations
-
-Inboxes requires Rails 3.x and [Devise](https://github.com/plataformatec/devise) for user identification (surely, messaging system is not possible without users). Now the gem is tested only with Ruby 1.8.7 and REE.
+Inboxes requires Rails 3.x and [Devise](https://github.com/plataformatec/devise) for user identification (surely, messaging system is not possible without users).
 We recommend to use Inboxes with [Faye](https://github.com/jcoglan/faye), because it's really sexy with it.
 
 Remember that unfortunately, Inboxes reserve 3 resources names: Discussion, Message and Speaker.
@@ -72,6 +72,10 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 ### Hints
 
 1. If you want to add breadcrumbs to Inboxes pages, we recommend you to use [crummy gem](https://github.com/zachinglis/crummy). It allows to define breadcrumbs in views.
+
+##Upgrading from 0.1 to current version (0.2)
+
+**Run `rails generate inboxes:upgrade_discussible` and then roll up the migration. Your DB is upgraded!**
 
 ##Todo
 
