@@ -1,6 +1,4 @@
 class Message < ActiveRecord::Base
-  
-  attr_accessible :body, :user, :discussion
 
   default_scope order(:created_at)
 
@@ -14,7 +12,7 @@ class Message < ActiveRecord::Base
   def visible_for? user
     self.created_at.to_i >= self.discussion.user_invited_at(user).to_i
   end
-  
+
   def unread_for? user
     speaker = self.discussion.find_speaker_by_user(user)
     if speaker

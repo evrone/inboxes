@@ -42,9 +42,17 @@ class Inboxes::DiscussionsController < Inboxes::BaseController
 
   private
 
+  def resource_params
+    if action_name == "create"
+      params[:discussion].permit([recipient_tokens: [], messages_attributes: [:body]])
+    else
+      {}
+    end
+  end
+
   def load_and_check_discussion_recipient
     # initializing model for new and create actions
-    @discussion = Discussion.new(params[:discussion].presence || {})
+    @discussion = Discussion.new(resource_params)
 
     # checking if discussion with this user already exists
     if @discussion.recipient_ids && @discussion.recipient_ids.size == 1

@@ -4,7 +4,7 @@ class Inboxes::SpeakersController < Inboxes::BaseController
 
   def create
     raise ActiveRecord::RecordNotFound unless params[:speaker] && params[:speaker][:user_id]
-    @user = User.find(params[:speaker][:user_id])
+    @user = User.find(resource_params[:user_id])
     flash[:notice] = t("inboxes.speakers.added") if @discussion.add_speaker(@user)
     redirect_to inboxes.discussion_url(@discussion)
   end
@@ -14,5 +14,11 @@ class Inboxes::SpeakersController < Inboxes::BaseController
     @speaker.destroy
     flash[:notice] = @speaker.user == current_user ? t("inboxes.discussions.leaved") : t("inboxes.speakers.removed")
     redirect_to @discussion.speakers.any? && @discussion.can_participate?(current_user) ? inboxes.discussion_url(@discussion) : inboxes.discussions_url
+  end
+
+  private
+
+  def resource_params
+    params[:speaker].permit(:user_id)
   end
 end
