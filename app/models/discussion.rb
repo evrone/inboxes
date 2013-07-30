@@ -1,7 +1,6 @@
 class Discussion < ActiveRecord::Base
   attr_accessor :recipient_tokens, :recipient_ids
   attr_reader :recipient_ids
-  attr_accessible :recipient_tokens, :messages_attributes, :user, :recipient_ids
 
   # creater
   has_many :messages, :dependent => :destroy

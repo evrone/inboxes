@@ -38,7 +38,11 @@ can :read, Discussion do |discussion|
 end
 ```
 
-5. Now Inboxes are ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
+5. Mount engine routes at your project routes.rb engine_name 'basic'
+```ruby
+mount Inboxes::Engine => "/inboxes"
+```
+6. Now Inboxes are ready to use. Open `http://yoursite.dev/discussions` to see the list of discussions. You can start new one.
 
 Default Inboxes views are ugly, so you can copy into your app and make anything with them: `rails generate inboxes:views`
 If you have problems with installation, you can check [code of demo app](https://github.com/kirs/inboxes-app)
