@@ -32,6 +32,8 @@ module Inboxes
         migration_template 'install.rb', 'db/migrate/install_inboxes.rb'
       end
 
+      # TODO
+      # broken
       def mount_engine
         route "mount Inboxes::Engine => '/inboxes', :as => 'inboxes'"
       end

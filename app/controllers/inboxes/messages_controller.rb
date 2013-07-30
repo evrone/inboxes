@@ -12,4 +12,10 @@ class Inboxes::MessagesController < Inboxes::BaseController
       format.js
     end
   end
+
+  private
+
+  def resource_params
+    params[:message].permit(:body)
+  end
 end

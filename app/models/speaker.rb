@@ -1,7 +1,5 @@
 class Speaker < ActiveRecord::Base
 
-  attr_accessible :discussion, :user, :updated_at
-
   belongs_to :user
   belongs_to :discussion
 
