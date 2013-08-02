@@ -17,7 +17,7 @@ class Discussion < ActiveRecord::Base
     joins(:speakers).where("discussions.updated_at >= speakers.updated_at AND speakers.user_id = ?", user)
   end)
 
-  default_scope order('updated_at DESC')
+  default_scope { order('updated_at DESC') }
 
   accepts_nested_attributes_for :messages
 
