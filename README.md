@@ -6,6 +6,8 @@
 
 Gem is not ready for Rails 4 (honestly, I didn't see any requests yet). If you need it, I would be happy to collaborate and make it capable with new Rails. Don't hesitate to drop me a line: [shatrov@me.com](shatrov@me.com)
 
+Update: thanks to [Stanislav Mekhonoshin](https://github.com/Mehonoshin), now we have [`rails-4` branch](https://github.com/evrone/inboxes/tree/rails-4).
+
 Inboxes is a young messaging system for Rails app. It:
 
 - provides 3 models for developers: Discussion, Message and Speaker
