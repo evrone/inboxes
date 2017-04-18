@@ -1,4 +1,4 @@
-#Inboxes
+# Inboxes
 
 [![Build Status](https://secure.travis-ci.org/evrone/inboxes.png)](http://travis-ci.org/evrone/inboxes)
 
@@ -15,7 +15,7 @@ Gem is not ready for Rails 4 (honestly, I didn't see any requests yet). If you n
 
 Update: thanks to [Stanislav Mekhonoshin](https://github.com/Mehonoshin), now we have [`rails-4` branch](https://github.com/evrone/inboxes/tree/rails-4).
 
-##Requirements
+## Requirements
 
 Inboxes requires Rails 3.x and [Devise](https://github.com/plataformatec/devise) for user identification (surely, messaging system is not possible without users).
 We recommend to use Inboxes with [Faye](https://github.com/jcoglan/faye), because it's really sexy with it.
@@ -24,7 +24,7 @@ Remember that unfortunately, Inboxes reserve 3 resources names: Discussion, Mess
 
 Since version 0.2.0, it is possible to add `has_inboxes` option to any model. For instance, it can be `Person` or `Teacher`.
 
-##Installation
+## Installation
 
 *Make sure that [Devise](https://github.com/plataformatec/devise) and [CanCan](https://github.com/ryanb/cancan) are already installed and configured in your app!*
 
@@ -49,7 +49,7 @@ If you have problems with installation, you can check [code of demo app](https:/
 
 By default, the gem provides localized phrases for Russian and English languages. You can easily override any of them. [Here is](https://github.com/kirs/inboxes/blob/master/config/locales/en.yml) list of all I18n phrases.
 
-#Integration with Faye
+# Integration with Faye
 
 You can watch the demo of integration [on YouTube](http://youtu.be/c12gey9DvyU)
 
@@ -75,11 +75,11 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 
 1. If you want to add breadcrumbs to Inboxes pages, we recommend you to use [crummy gem](https://github.com/zachinglis/crummy). It allows to define breadcrumbs in views.
 
-##Upgrading from 0.1 to current version (0.2)
+## Upgrading from 0.1 to current version (0.2)
 
 **Run `rails generate inboxes:upgrade_discussible` and then roll up the migration. Your DB is upgraded!**
 
-##Todo
+## Todo
 
 - Finalize RSpec tests (are located in [rspec branch](https://github.com/evrone/inboxes/tree/rspec))
 - Add Pusher capability
@@ -87,7 +87,7 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 
 ## [Changelog](https://github.com/evrone/inboxes/blob/master/CHANGELOG.md)
 
-##Contributors
+## Contributors
 
 - [Kir Shatrov](https://github.com/kirs/) (Evrone Company)
 - [Nikolay Seskin](https://github.com/finist/) (Evrone Company)
@@ -98,4 +98,4 @@ You can read more about that on it's [official page](http://faye.jcoglan.com/).
 - [isqad88](https://github.com/isqad88/)
 - [Chris Sargeant](https://github.com/liothen/)
 
-##Feel free for pull requests!
+## Feel free for pull requests!
