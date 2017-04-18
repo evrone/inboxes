@@ -1,3 +1,7 @@
+# The project is no longer maintained.
+
+**Please contact [@kirs](https://github.com/kirs) if you're interested in taking it over.**
+
 # Inboxes
 
 [![Build Status](https://secure.travis-ci.org/evrone/inboxes.png)](http://travis-ci.org/evrone/inboxes)
