@@ -94,10 +94,6 @@ Finalize RSpec tests (are located in
 
 Please read [Code of Conduct](CODE-OF-CONDUCT.md) and [Contributing Guidelines](CONTRIBUTING.md) for submitting pull requests to us.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Changelog
 
 The changelog is [here](CHANGELOG.md).
@@ -113,7 +109,7 @@ The changelog is [here](CHANGELOG.md).
 - [isqad88](https://github.com/isqad88/)
 - [Chris Sargeant](https://github.com/liothen/)
 
-See also the list of [contributors](contributors) who participated in this project.
+See also the list of [contributors](/contributors) who participated in this project.
 
 ## License
 
