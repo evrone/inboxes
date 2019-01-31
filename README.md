@@ -109,7 +109,7 @@ The changelog is [here](CHANGELOG.md).
 - [isqad88](https://github.com/isqad88/)
 - [Chris Sargeant](https://github.com/liothen/)
 
-See also the list of [contributors](/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/evrone/inboxes/contributors) who participated in this project.
 
 ## License
 
